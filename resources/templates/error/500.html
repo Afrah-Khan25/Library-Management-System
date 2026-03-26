@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Server Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #fdf2f2;
+        }
+        h1 {
+            font-size: 48px;
+            color: #d9534f;
+        }
+        p {
+            font-size: 18px;
+        }
+        a {
+            color: #0275d8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>500</h1>
+    <p>Sorry, something went wrong on our server.</p>
+    <p><a th:href="@{/}">Go back to Home</a></p>
+</body>
+</html>

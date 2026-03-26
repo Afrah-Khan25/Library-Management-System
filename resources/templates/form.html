@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.id == null ? 'Add Book' : 'Edit Book'}">Book Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        form {
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 6px;
+        }
+        .error {s
+            color: red;
+            font-size: 0.9em;
+        }
+        button {
+            margin-top: 15px;
+            padding: 8px 14px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${book.id == null ? 'Add Book' : 'Edit Book'}">Book Form</h1>
+
+<form th:action="@{/books-ui/save}" th:object="${book}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Title:</label>
+    <input type="text" th:field="*{title}" />
+    <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</div>
+
+    <label>Author:</label>
+    <input type="text" th:field="*{author}" />
+    <div class="error" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</div>
+
+    <label>Price (₹):</label>
+    <input type="number" step="0.01" th:field="*{price}" />
+    <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
+
+    <button type="submit">Save</button>
+</form>
+
+<a th:href="@{/books-ui}">← Back to Book List</a>
+
+</body>
+</html>
